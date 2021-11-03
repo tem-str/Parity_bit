@@ -22,25 +22,25 @@ The ultimate goal of the project is to provide top-down methodology and reusable
 * ***diversification of responsibility and competence*** of IP engineers: implementation of engines offering key microarchitectural mechanisms can be charged to the core of leading expert engineers, while developers of final designs can focus solely on application-specific functionality;
 * facilitating IP design centers to package, reuse and deliver basis for ***semi-custom IP cores***, enabling seamless reuse of microarchitectural competence for unique, highly specialized designs.
 
-![pic_test](kernelip/__img/kernelip_model.png)
+![pic_test]
 
 Aligned to the strategy of e.g. RISC-V project that standardises open (or provides a baseline for) RISC CPU architecture, ActiveCore endeavours to propose open reference implementations of common microarchitectures (abstracted from certain architecture).
 
 ### Project structure
 
 Current version of project is implemented as a collection of standalone Kotlin libraries that can be built using IntelliJ IDEA:
-![pic_test](kernelip/__img/Framework.png)
+![pic_test]
 
 * **hwast** - generic AST constructor of behavioral-style HW specifications (/hwast)
 
 * Demo KIP cores based on hwast (/kernelip):
 	* **Rtl** - generator of behavioral RTL. Exports to SystemVerilog HDL
 	* **Cyclix** (**cycli**c e**x**ecution) - generator of hardware performing cyclic statically scheduled computations. Translates either to synchronous RTL for Rtl KIP or to C++ sources for Xilinx HLS
-![pic_test](kernelip/__img/Cyclix.png)
+![pic_test]
 	* **Pipex** (**pipe**lined e**x**ecution) - generator of hardware with dynamically scheduled scalar in-order pipelined microarchitecture. Supports inter-stage communication and variable-latency I/O synchronization features. Translates to Cyclix KIP
-![pic_test](kernelip/__img/Pipex.png)
+![pic_test]
 	* **Reordex** (**reorde**red e**x**ecution) - generator of (co)processors with superscalar out-of-order (OoO) microarchitecture and register renaming. Translates to Cyclix KIP
-![pic_test](kernelip/__img/Reordex.png)
+![pic_test]
 
 
 * Demo core generators based on KIP cores (/designs/coregen):
@@ -50,7 +50,7 @@ Current version of project is implemented as a collection of standalone Kotlin l
 	* **Ariele** - full xbar generator, based on Pipex KIP core
 	* **Citadel** - OoO FPU coprocessor, based on Reordex KIP core
 	* **Agenda** - OoO RISC-V (RV32I) CPU, based on Reordex KIP core *(passes tests, optimization in progress)*
-![pic_test](designs/rtl/kerygma/doc/agenda.png)
+![pic_test]
 
 * Auxiliary reusable cores:
 	* **UDM** - bus transactor controlled via UART interface. Supports bursts and bus timeouts. Communication library for Python 3 included. Lab work manual included: https://github.com/AntonovAlexander/activecore/blob/master/designs/rtl/udm/doc/udm_lab_manual.pdf. Location: /designs/rtl/udm
@@ -58,6 +58,6 @@ Current version of project is implemented as a collection of standalone Kotlin l
 
 * Demo FPGA-based SoCs:
 	* **Sigma** - basic MCU consisting of a single sigma_tile module, UDM, and GPIO controller. Can be learned within a single lab work, lab work manual included: https://github.com/AntonovAlexander/activecore/blob/master/designs/rtl/sigma/doc/sigma_lab_manual.pdf. Location: /designs/rtl/sigma
-![pic_test](designs/rtl/sigma/doc/sigma_struct.png)
+![pic_test]
 	* **Magma** - NUMA MPSoC consisting of multiple sigma_tile modules connected by Ariele xbar. Location: /designs/rtl/magma
 	* **Kerygma** - MPU based on Agenda CPU. Location: /designs/rtl/kerygma *(passes tests, optimization in progress)*
